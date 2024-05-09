@@ -31,3 +31,9 @@ TEST_CASE("Testa ataque mesma coluna", "[rainha]") {
     REQUIRE(answer("entradas/testcase5/teste14.txt") == 0);
     REQUIRE(answer("entradas/testcase5/teste15.txt") == 0);
 }
+
+TEST_CASE("Testa ataque diagonal", "[rainha]") {
+    REQUIRE(answer("entradas/testcase6/teste16.txt") == 0);
+    REQUIRE(answer("entradas/testcase6/teste17.txt") == 0);
+    REQUIRE(answer("entradas/testcase6/teste18.txt") == 0);
+}
