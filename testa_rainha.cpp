@@ -20,8 +20,8 @@ TEST_CASE("Entrada inválida, numero de rainhas diferente de 8", "[rainha]") {
     REQUIRE(answer("entradas/testcase3/teste9.txt") == -1);
 }
 
-TEST_CASE("Entrada inválida, numero de rainhas diferente de 8", "[rainha]") {
-    REQUIRE(answer("entradas/testcase4/teste10.txt") == -1);
-    REQUIRE(answer("entradas/testcase4/teste11.txt") == -1);
-    REQUIRE(answer("entradas/testcase4/teste12.txt") == -1);
+TEST_CASE("Testa ataque mesma linha", "[rainha]") {
+    REQUIRE(answer("entradas/testcase4/teste10.txt") == 0);
+    REQUIRE(answer("entradas/testcase4/teste11.txt") == 0);
+    REQUIRE(answer("entradas/testcase4/teste12.txt") == 0);
 }
