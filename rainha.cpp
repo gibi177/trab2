@@ -9,10 +9,11 @@ using std::endl;
 using std::string;
 
 
-int isBinary8x8 (const std::string& filename) {
+int isValid (const std::string& filename) {
     std::ifstream file(filename);
     string line;
     int linecounter = 0;
+    int queencounter = 0;
 
     if (!file) {
         std::cout << "Erro ao abrir o arquivo." << filename << std::endl;
@@ -27,6 +28,9 @@ int isBinary8x8 (const std::string& filename) {
             if (c != '0' && c != '1') {
                 return -1;
             }
+            if (c == '1') {
+                queencounter++;
+            }
         }   
         linecounter ++;
     }
@@ -35,10 +39,13 @@ int isBinary8x8 (const std::string& filename) {
     if (linecounter != 8) {
         return -1;
     }
+    if (queencounter != 8) {
+        return -1;
+    }
 
     return 1;
 }
 
 int answer(const string& filename) {
-    return isBinary8x8(filename);
+    return isValid(filename);
 }
