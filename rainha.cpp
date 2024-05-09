@@ -24,7 +24,8 @@ int isValid (const std::string& filename) {
         if (line.size() != 8) {
             return -1;
         }
-        for (char c : line) {
+        for (int i = 0; i < 8; i++) {
+            char c = line[i];
             if (c != '0' && c != '1') {
                 return -1;
             }
