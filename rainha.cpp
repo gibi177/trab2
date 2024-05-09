@@ -5,6 +5,7 @@
 #include <vector>
 #include <utility>     //para usar std::pair
 #include <cstddef>     //para usar std::size_t
+#include <cmath>       //para usar std::abs
 
 using std::cout; 
 using std::cin;
@@ -12,6 +13,7 @@ using std::endl;
 using std::string;
 using std::vector;
 using std::pair;
+using std::abs;
 
 
 //vetor global que armazena as coordenadas das rainhas
@@ -62,6 +64,8 @@ int isAttacked (const vector<pair<int, int>>& positions) {
             if (positions[i].first == positions[j].first) {
                 return 0;
             } else if (positions[i].second == positions[j].second) {
+                return 0;
+            } else if (abs(positions[i].first - positions[j].first) == abs(positions[i].second - positions[j].second)) {
                 return 0;
             }
         }
