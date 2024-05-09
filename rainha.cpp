@@ -61,6 +61,8 @@ int isAttacked (const vector<pair<int, int>>& positions) {
         for (std::size_t j = 0; j < positions.size(); j++) {
             if (positions[i].first == positions[j].first) {
                 return 0;
+            } else if (positions[i].second == positions[j].second) {
+                return 0;
             }
         }
     }
