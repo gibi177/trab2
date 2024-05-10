@@ -80,14 +80,18 @@ set<pair<int,int>> isAttacked (const vector<pair<int, int>>& positions) {
     return attackedqueens;
 }
 
-void writeattackstofile (const set<pair<int, int>>& attackedqueens) {
-    std::ofstream createdfile("ataques.txt");
+void writeattackstofile (const set<pair<int, int>>& attackedqueens, const string& filename) {
+    string ataquesfile = "ataques/atck ";
 
-    for (const auto& element : attackedqueens) {
-        createdfile << element.first << "," << element.second << " ";
+    std::ofstream createdfile(ataquesfile);
+    if (createdfile.is_open()) {
+        for (const auto& element : attackedqueens) {
+            createdfile << element.first << "," << element.second << " ";   
+        }
+        createdfile.close();
+    } else {
+        cout << "falha ao criar arquivo" << endl;
     }
-
-    createdfile.close();
 }
 
 //Usa as funcoes de cima para retornar a resposta final
@@ -100,7 +104,7 @@ int answer(const string& filename) {
 
     set<pair<int, int>> attackedqueens = isAttacked(positions);
     if (!attackedqueens.empty()) {
-        writeattackstofile(attackedqueens);
+        writeattackstofile(attackedqueens, filename);
         return 0;
     }
     return 1;
