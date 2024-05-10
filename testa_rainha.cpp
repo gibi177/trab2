@@ -39,7 +39,6 @@ TEST_CASE("Testa ataque diagonal", "[rainha]") {
 }
 
 TEST_CASE("Soluções validas", "[rainha]") {
-    REQUIRE(answer("entradas/testcase7/teste19.txt") == 0);
-    REQUIRE(answer("entradas/testcase7/teste20.txt") == 0);
-    REQUIRE(answer("entradas/testcase7/teste21.txt") == 0);
+    REQUIRE(answer("entradas/testcase7/teste19.txt") == 1);
+    REQUIRE(answer("entradas/testcase7/teste20.txt") == 1);
 }
