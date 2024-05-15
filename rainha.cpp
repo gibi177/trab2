@@ -15,7 +15,7 @@ vector <pair <int, int>> positions;
 
 
 // Checa se o input é matriz 8x8, se tem 8 rainhas, se a matriz é binaria e cria vetor com as coordenadas das rainhas
-int isValid(const std::string& filename) {
+int isValid(const string& filename) {
     ifstream file(filename);
     string line;
     int linecounter = 0;
@@ -56,7 +56,7 @@ int isValid(const std::string& filename) {
 
 // Checa se as rainhas se atacam na horizontal, vertical e diagonal
 bool isAttacked(const vector<pair<int, int>>& positions) {
-    static int counter = 1;
+    static int counter = 1;   // Variavel estatica local, usada no nome do arquivo a ser criado
     bool isunderattack = false;
 
     // Cria arquivo com as rainhas que se atacam nesse teste
@@ -64,13 +64,14 @@ bool isAttacked(const vector<pair<int, int>>& positions) {
     string ataquesfile = "ataques/atck" + to_string(counter);
     ofstream createdfile(ataquesfile);
 
-    for (std::size_t i = 0; i < positions.size(); i++) {
-        for (std::size_t j = i + 1; j < positions.size(); j++) {
+    for (size_t i = 0; i < positions.size(); i++) {
+        for (size_t j = i + 1; j < positions.size(); j++) {
 
             // Todos os casos que as rainhas se atacam
             if (positions[i].first == positions[j].first || positions[i].second == positions[j].second ||
                 abs(positions[i].first - positions[j].first) == abs(positions[i].second - positions[j].second)) {
-
+                
+                // Escreve no arquivo as rainhas que se atacam, um par por linha
                 if (createdfile.is_open()) {
                     createdfile << positions[i].first << "," << positions[i].second << " "
                                 << positions[j].first << "," << positions[j].second << endl; 
@@ -88,8 +89,8 @@ bool isAttacked(const vector<pair<int, int>>& positions) {
 
 // Usa as funcoes de cima para retornar a resposta final
 int answer(const string& filename) {
+    
     int valid = isValid(filename);
-
     if (valid != 1) {
         return valid;
     }
