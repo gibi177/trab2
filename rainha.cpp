@@ -59,6 +59,11 @@ bool isAttacked (const vector<pair<int, int>>& positions) {
     static int counter = 1;
     bool isunderattack = false;
 
+    //cria arquivo com as rainhas que se atacam nesse teste
+    //note que se a matriz for solucao, cria um arquivo que ficara vazio (sem ataques)
+    string ataquesfile = "ataques/atck" + to_string(counter);
+    ofstream createdfile(ataquesfile);
+
     for (std::size_t i = 0; i < positions.size(); i++) {
         for (std::size_t j = i + 1; j < positions.size(); j++) {
 
@@ -66,22 +71,18 @@ bool isAttacked (const vector<pair<int, int>>& positions) {
             if (positions[i].first == positions[j].first || positions[i].second == positions[j].second ||
                 abs(positions[i].first - positions[j].first) == abs(positions[i].second - positions[j].second)) {
 
-                //cria arquivo com as rainhas que se atacam
-                string ataquesfile = "ataques/atck" + to_string(counter);
-                ofstream createdfile(ataquesfile);
-
                 if (createdfile.is_open()) {
                     createdfile << positions[i].first << "," << positions[i].second << " "
                                 << positions[j].first << "," << positions[j].second << endl;   
-                    createdfile.close();
                 } else {
                     cout << "falha ao criar arquivo" << endl;
                 }
-                counter ++;
                 isunderattack = true;
             }
         }
     }
+    counter ++;
+    createdfile.close();   //fecha arquivo
     return isunderattack;
 }
 
