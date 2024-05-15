@@ -42,3 +42,8 @@ TEST_CASE("Soluções validas", "[rainha]") {
     REQUIRE(answer("entradas/testcase7/teste19.txt") == 1);
     REQUIRE(answer("entradas/testcase7/teste20.txt") == 1);
 }
+
+TEST_CASE("Erro ao abrir arquivo, caminho errado", "[rainha]") {
+    REQUIRE(answer("entradas/testcase5252552/teste.txt") == -2);
+    REQUIRE(answer("entradas/testcase848484/teste.txt") == -2);
+}
